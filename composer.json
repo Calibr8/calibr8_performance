@@ -1,0 +1,18 @@
+{
+    "name": "calibrate/calibr8_performance",
+    "description": "Performance add-ons.",
+    "type": "drupal-custom",
+    "keywords": ["Drupal 8","Performance"],
+    "homepage": "https://github.com/Calibr8/calibr8_performance",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Wouter Dierick",
+            "email": "wouter.dierick@calibrate.be",
+            "homepage": "http://www.calibrate.be"
+        }
+    ],
+    "require": {
+        "calibrate/calibr8_admin":"*"
+    }
+}
