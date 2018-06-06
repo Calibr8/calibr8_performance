@@ -1,0 +1,8 @@
+name: Calibr8 Performance
+description: Performance add-ons.
+package: Calibr8
+type: module
+core: 8.x
+version: '8.x-1.0'
+dependencies:
+  - calibr8_admin

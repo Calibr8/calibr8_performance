@@ -1,0 +1,6 @@
+# Menu item for configuration page.
+calibr8_performance.settings:
+  title: 'Performance'
+  description: 'Configure Performance.'
+  route_name: calibr8_performance.settings
+  parent: system.admin_config_calibr8

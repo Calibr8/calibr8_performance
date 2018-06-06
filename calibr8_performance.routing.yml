@@ -1,0 +1,15 @@
+# Settings page
+calibr8_performance.settings:
+  path: '/admin/config/calibr8/performance'
+  defaults:
+    _form: '\Drupal\calibr8_performance\Form\SettingsForm'
+    _title: 'Performance'
+  requirements:
+    _permission: 'administer site configuration'
+calibr8_performance.delete_resource_hint:
+  path: '/admin/config/calibr8/performance/delete_resourcehint/{rid}'
+  defaults:
+    _form: '\Drupal\calibr8_performance\Form\DeleteResourcehintForm'
+    _title: 'Performance'
+  requirements:
+    _permission: 'administer site configuration'

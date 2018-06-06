@@ -1,0 +1,44 @@
+<?php
+
+const CALIBR8_PERFORMANCE_SETTINGS_PATH = 'admin/config/calibr8/performance';
+
+/**
+ * Implements hook_theme().
+ */
+function calibr8_performance_theme() {
+
+  $themes = [
+    'calibr8_performance_resource_hint' => [
+      'variables' => [
+        'resource_hint' => NULL,
+        'url' => NULL,
+      ],
+      'template' => 'calibr8-performance-resource-hint',
+      'render'
+    ],
+  ];
+
+  return $themes;
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function calibr8_performance_preprocess_html(&$variables) {
+
+  $config = \Drupal::config('calibr8_performance.settings');
+
+  $resource_hint_items = $config->get('resource_hints');
+
+  if($resource_hint_items) {
+    foreach($resource_hint_items as $item) {
+      $variables['resource_hints'][] = [
+        '#theme' => 'calibr8_performance_resource_hint',
+        '#resource_hint' => $item['resource_hint'],
+        '#url' => $item['url'],
+        '#attributes' => new \Drupal\Core\Template\Attribute(),
+      ];
+    }
+  }
+
+}
