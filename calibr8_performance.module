@@ -29,6 +29,7 @@ function calibr8_performance_preprocess_html(&$variables) {
   $config = \Drupal::config('calibr8_performance.settings');
 
   $resource_hint_items = $config->get('resource_hints');
+  $place_scripts_in_head = $config->get('place_scripts_in_head');
 
   if($resource_hint_items) {
     foreach($resource_hint_items as $item) {
@@ -39,6 +40,11 @@ function calibr8_performance_preprocess_html(&$variables) {
         '#attributes' => new \Drupal\Core\Template\Attribute(),
       ];
     }
+  }
+
+  $variables['place_scripts_in_head'] = FALSE;
+  if($place_scripts_in_head) {
+    $variables['place_scripts_in_head'] = TRUE;
   }
 
 }

@@ -41,6 +41,15 @@ class SettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('replace_css_imports'),
     ];
 
+    // PLACE SCRIPTS IN HEAD
+
+    $form['place_scripts_in_head'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Place scripts in head'),
+      '#description' => $this->t('Drupal places script tags at the bottom but this is considered an anti-pattern.'),
+      '#default_value' => $config->get('place_scripts_in_head'),
+    ];
+
     // RESOURCE HINTS
 
     // Filter settings
@@ -184,6 +193,7 @@ class SettingsForm extends ConfigFormBase {
     $config = \Drupal::service('config.factory')->getEditable('calibr8_performance.settings');
 
     $config->set('replace_css_imports', $form_state->getValue('replace_css_imports'));
+    $config->set('place_scripts_in_head', $form_state->getValue('place_scripts_in_head'));
 
     $resource_hints_table = $form_state->getValue('resource_hints_table');
     $resource_hints_values = [];
