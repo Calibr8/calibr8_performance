@@ -32,6 +32,17 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('calibr8_performance.settings');
 
+    // REPLACE CSS @import with <link />
+
+    $form['replace_css_imports'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Include CSS files with link instead of @import.'),
+      '#description' => $this->t('Drupal uses @import to support IE7 and below. Turn this off to increase CSS loading performance on recent browsers.'),
+      '#default_value' => $config->get('replace_css_imports'),
+    ];
+
+    // RESOURCE HINTS
+
     // Filter settings
     $resource_hints = $config->get('resource_hints');
     $resource_hints_values = [
@@ -171,6 +182,8 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = \Drupal::service('config.factory')->getEditable('calibr8_performance.settings');
+
+    $config->set('replace_css_imports', $form_state->getValue('replace_css_imports'));
 
     $resource_hints_table = $form_state->getValue('resource_hints_table');
     $resource_hints_values = [];
